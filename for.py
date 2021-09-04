@@ -9,5 +9,5 @@ for arrays in arrayx:
     arrayy.append(int(arrays))
 
 print(' '.join(map(str,arrayy)))
-###10871
+###10871s
 ##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
