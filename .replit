@@ -1,2 +1,2 @@
-language = "bash"
-run = "python main.py"
+language = "python"
+run = "python greed.py"

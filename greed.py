@@ -8,3 +8,4 @@ for coin in coins:
     count += k // int(coin)
     k %= int(coin)
 print(count)
+##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
