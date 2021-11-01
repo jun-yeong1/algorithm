@@ -1,21 +1,18 @@
 def dn(n):
-  if n < 10:
-    dnum = n + n
-  else:
-    firstnum = n // 10
-    secondnum = n - (firstnum * 10) 
-    dnum = n + firstnum + secondnum
-  return dn(dnum)
+  n = str(n)
   dnum = 0
+  for i in n:
+    i = int(i)
+    dnum += i
+  dnum = int(n) + dnum
+  return dnum
 
-for i in range(1,100,1):
-  while True:
-    num = i
-    if dn(i) // i == 0:
-      continue
-    else:
-      break
-    
-    
-  print(i) 
-  
+num = []
+for i in range(1,10000,1):
+  num.append(dn(i))
+num = set(num) #정렬해야 함
+for k in range(1,10000,1):
+  if k in num:
+    pass
+  else:
+    print(k) 
