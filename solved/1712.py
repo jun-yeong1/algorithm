@@ -2,8 +2,6 @@ import sys
 
 abc = list(map(int, sys.stdin.readline().split()))
 
-
-
 if abc[2] - abc[1] <= 0:
   print(-1)
 else:
