@@ -1,7 +1,7 @@
 import sys
 
 def recursion(s, l, r):
-  # 함수 호출 개수세기
+  # 함수 호출 횟수
     recursion.counter += 1
     if l >= r: return 1
     elif s[l] != s[r]: return 0
