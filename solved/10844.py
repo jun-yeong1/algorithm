@@ -23,7 +23,6 @@ result = 0
 if n == 1:
   print(9)
 else:
-  for j in range(1, 9):
+  for j in range(0, 10):
     result += dp[j]
-  result += dp[0] + dp[9]
   print(result % 1000000000)
