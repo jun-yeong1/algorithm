@@ -12,7 +12,7 @@ result = 0
 if C == 2:
   print(end)
 else:
-  while(start < end):
+  while(start <= end):
     mid = (start + end) // 2
     count = 1 ## 공유기 갯수
     wifi_index = array[0] ## wifi_index 마지막 설치한 위치
@@ -23,6 +23,6 @@ else:
     if count >= C:
       result = mid
       start = mid + 1
-    elif count < C:
-      end = mid
+    else:
+      end = mid - 1
   print(result)  
