@@ -1,4 +1,5 @@
 from collections import deque
+import sys
 
 def dfs(graph, v, visited):
   visited[v] = True
@@ -23,7 +24,7 @@ n, m, v = list(map(int, input().split()))
 array = []
 array.append(0)
 for i in range(m):
-  array.append(list(map(int, input().split())))
+  array.append(list(map(int, sys.stdin.readline().split())))
   
 graph = [[] for _ in range(n + 1)]
 
@@ -31,8 +32,11 @@ for j in range(1, m + 1):
   graph[array[j][0]].append(array[j][1])
   graph[array[j][1]].append(array[j][0])
 
-visited = [False] * (n + 1)
-dfs(graph, v, visited)
+for k in range(1, n + 1):
+  graph[k].sort()
+
+visited_dfs = [False] * (n + 1)
+dfs(graph, v, visited_dfs)
 print(sep='\n')
-visited = [False] * (n + 1)
-bfs(graph, v, visited)
+visited_bfs = [False] * (n + 1)
+bfs(graph, v, visited_bfs)
