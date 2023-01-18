@@ -3,42 +3,36 @@ from collections import deque
 
 def bfs():
   while queue:
-    x, y = queue.popleft()
+    z, x, y = queue.popleft()
     for i in range(6):
       nx = x + dx[i]
       ny = y + dy[i]
-      if 0 <= i < 4:
-        if 0 <= x < n and 0 <= y < m:
-          if 0 <= nx < n and 0 <= ny < m and tomato[nx][ny] == 0:
-            tomato[nx][ny] = tomato[x][y] + 1
-            queue.append((nx, ny))
-        if n <= x < (n * h) and 0 <= y < m:
-          if n <= nx < (n * h) and 0 <= ny < m and tomato[nx][ny] == 0:
-            tomato[nx][ny] = tomato[x][y] + 1
-            queue.append((nx, ny))
-      else:
-        if 0 <= nx < (n * h) and 0 <= ny < m and tomato[nx][ny] == 0:
-          tomato[nx][ny] = tomato[x][y] + 1
-          queue.append((nx, ny))
-  return tomato 
- 
+      nz = z + dz[i]
+      if 0 <= nx < n and 0 <= ny < m and 0 <= nz < h and tomato[nz][nx][ny] == 0:
+        tomato[nz][nx][ny] = tomato[z][x][y] + 1
+        queue.append((nz, nx, ny))
 m, n, h = map(int, input().split())
-tomato = []
-for _ in range(n * h):
-  tomato.append(list(map(int, sys.stdin.readline().split())))
+tomato = [[] for _ in range(h)]
+for i in range(h):
+  for j in range(n):
+    tomato[i].append(list(map(int, sys.stdin.readline().split())))
 queue = deque()
-for i in range(n * h):
-  for j in range(m):
-    if tomato[i][j] == 1:
-      queue.append((i, j))     
-dx = [1, -1, 0, 0, n, -n]
+for i in range(h):
+  for j in range(n):
+    for k in range(m):
+      if tomato[i][j][k] == 1:
+        queue.append((i, j, k))
+            
+dx = [1, -1, 0, 0, 0, 0]
 dy = [0, 0, 1, -1, 0, 0]
+dz = [0, 0, 0, 0, 1, -1]
 bfs()
 result = 0
 for i in tomato:
   for j in i:
-    if j == 0:
-      print(-1)
-      exit(0)
-  result = max(result, max(i))
+    for k in j:
+      if k == 0:
+        print(-1)
+        exit(0)
+    result = max(result, max(j))
 print(result - 1)
