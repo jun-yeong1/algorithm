@@ -1,17 +1,17 @@
 class AVLNode:
 	def __init__(self, newItem, left, right, h):
- 		self.item = newItem
- 		self.left = left
- 		self.right = right
- 		self.height = h
+		self.item = newItem
+		self.left = left
+		self.right = right
+		self.height = h
  
 class AVLTree:
  	def __init__(self):
- 		self.NIL = AVLNode(None, None, None, 0)
- 		self.__root = self.NIL
- 		self.LL = 1; self.LR = 2; self.RR = 3; self.RL = 4
- 		self.NO_NEED = 0; 
- 		self.ILLEGAL = -1
+    	self.NIL = AVLNode(None, None, None, 0)
+		self.__root = self.NIL
+		self.LL = 1; self.LR = 2; self.RR = 3; self.RL = 4
+		self.NO_NEED = 0; 
+		self.ILLEGAL = -1
  	
  	# [알고리즘 10-1] 구현: 검색
  	def search(x):
