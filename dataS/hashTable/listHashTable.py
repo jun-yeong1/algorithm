@@ -66,6 +66,6 @@ h.delete(80)
 item = 21
 (i, j) = h.search(item)
 if i == None:
-    println("Search Failed!")
+    print("Search Failed!")
 else:
     print("Search:", item, "List:", i, ", item index", j)

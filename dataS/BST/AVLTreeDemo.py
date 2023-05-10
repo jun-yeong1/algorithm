@@ -1,4 +1,4 @@
-from AVLTree import AVLTree
+from BST.AVLTree import AVLTree
 bst1 = AVLTree()
 bst1.insert(10)
 bst1.insert(20)

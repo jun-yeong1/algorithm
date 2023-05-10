@@ -1,5 +1,5 @@
 import math
-from insertionSort import insertionSort
+from sort.insertionSort import insertionSort
 
 def bucketSort(A):  # [0, 1) 범위의 실수 정렬
 	n = len(A)

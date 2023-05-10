@@ -1,5 +1,5 @@
-from DS.list.CircularlinkedList import *
-from DS.list.listNode import *
+from list.circularLinkedList import *
+from list.listNode import *
 
 class ChainedHashTable:
 	def __init__(self, n):

@@ -10,7 +10,7 @@ class BinarySearchTree:
 
 	# [알고리즘 10-1] 구현: 검색
 	def search(self, x) -> TreeNode:
-		return __searchItem(self.__root, x)
+		return self.__searchItem(self.__root, x)
 
 	def __searchItem(self, tNode:TreeNode, x) -> TreeNode:
 		if (tNode == None):

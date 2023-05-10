@@ -1,4 +1,4 @@
-from listStack import *
+from stack.listStack import *
 
 st1 = ListStack()
 print(st1.top())	# No effect

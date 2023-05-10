@@ -1,8 +1,9 @@
-from listNode import ListNode # listNode 파일 경로 다운에 잇음
+from list.listNode import ListNode
+from typing import Tuple
 
 class LinkedListBasic:
 	def __init__(self):
-		self.__head = ListNode('dummy', None) # type: ignore
+		self.__head = ListNode('dummy', None)
 		self.__numItems = 0
 
 	# [알고리즘 5 - 2] 구현: 연결 리스트에 원소 삽입하기(더미 헤드를 두는 대표 버전)
@@ -70,7 +71,7 @@ class LinkedListBasic:
 		return self.__numItems
 
 	def clear(self):
-		self.__head = ListNode("dummy", None) # type: ignore
+		self.__head = ListNode("dummy", None)
 		self.__numItems = 0
 
 	def count(self, x) -> int:
@@ -109,7 +110,7 @@ class LinkedListBasic:
 		for index in range(len(a)):
 			self.append(a[index])
  
-	def __findNode(self, x) -> (ListNode, ListNode): # type: ignore
+	def __findNode(self, x) -> (Tuple[ListNode, ListNode]):
 		prev = self.__head  # 더미 헤드
 		curr = prev.next    # 0번 노드
 		while curr != None:

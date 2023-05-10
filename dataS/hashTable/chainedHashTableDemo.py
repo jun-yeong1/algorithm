@@ -1,6 +1,6 @@
-from DS.hashTable.chainedHashTable import *
-from DS.list.CircularlinkedList import *
-from DS.list.listNode import *
+from hashTable.chainedHashTable import *
+from list.circularLinkedList import *
+from list.listNode import *
 
 h = ChainedHashTable(7)
 h.insert(10)
@@ -18,7 +18,7 @@ h.delete(44)
 item = 21
 slot = h.search(item)
 if slot == None:
-	println("Search Failed for", item)
+	print("Search Failed for", item)
 else:
 	print("Search for", item, "successful at slot", slot)
 

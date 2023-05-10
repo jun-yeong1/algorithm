@@ -1,4 +1,4 @@
-from listStack import *
+from stack.listStack import *
 
 def evaluate(p):
 	s = ListStack()
@@ -28,7 +28,7 @@ def operation(opr2:int, opr1:int, ch) -> int:  # 연산하기
 
 def main():
 	postfix = "700 3 47 + 6 * - 4 /"  # 테스트 샘플 입력(후위 표현식)
-	print("Input string: ", postfix)
+	print("Input string: ", postfix);
 	answer = evaluate(postfix)
 	print("Answer: ", answer)
 	print(ord('0'), ord('9'))

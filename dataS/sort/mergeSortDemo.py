@@ -1,4 +1,4 @@
-from mergeSort import *
+from sort.mergeSort import *
 
 def main():
     print("Mergesort test")

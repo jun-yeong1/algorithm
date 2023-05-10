@@ -1,4 +1,4 @@
-from binarySearchTree import *
+from BST.binarySearchTree import *
 
 bst1 = BinarySearchTree()
 bst1.insert(10)

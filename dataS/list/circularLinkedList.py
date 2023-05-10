@@ -1,8 +1,9 @@
-from listNode import ListNode
+from list.listNode import ListNode
+from typing import Tuple
 
 class CircularLinkedList:
 	def __init__(self):
-		self.__tail = ListNode("dummy", None) # type: ignore
+		self.__tail = ListNode("dummy", None)
 		self.__tail.next = self.__tail
 		self.__numItems = 0
 
@@ -30,7 +31,7 @@ class CircularLinkedList:
 		# 인덱스 i 결정
 		if len(args) != 0: # pop(k)과 같이 인자가 있으면 i = k 할당
 			i = args[0]
-		if len(args) == 0 or i == -1 : # pop()에 인자가 없거나 pop(-1)이면 i에 맨 끝 인덱스 할당
+		if len(args) == 0 or i == -1:# pop()에 인자가 없거나 pop(-1)이면 i에 맨 끝 인덱스 할당
 			i = self.__numItems - 1
 		# i번 원소 삭제
 		if (i >= 0 and i <= self.__numItems - 1):
@@ -85,7 +86,7 @@ class CircularLinkedList:
 		return self.__numItems
 
 	def clear(self):
-		self.__tail = ListNode("dummy", None) # type: ignore
+		self.__tail = ListNode("dummy", None)
 		self.__tail.next = self.__tail
 		self.__numItems = 0
 
@@ -123,7 +124,7 @@ class CircularLinkedList:
 		for element in a:
 			self.append(element)
 
-	def __findNode(self, x) -> (ListNode, ListNode): # type: ignore
+	def __findNode(self, x) -> (Tuple[ListNode, ListNode]):
 		__head = prev = self.__tail.next  # 더미 헤드
 		curr = prev.next  # 0번 노드
 		while curr != __head:

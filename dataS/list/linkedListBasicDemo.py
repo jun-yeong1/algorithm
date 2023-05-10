@@ -1,4 +1,4 @@
-from linkedListBasic import *
+from list.linkedListBasic import *
 
 list = LinkedListBasic()
 list.append(30); list.insert(0, 20)
