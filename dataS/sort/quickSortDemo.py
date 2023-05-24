@@ -1,11 +1,24 @@
-from sort.quickSort import *
-
+from quickSort import *
+import random
+import time
+import sys
+sys.setrecursionlimit(1000000)
+listLenght = 3000
 def main():
-    print("Quicksort test")
-    A = [3, 8, 2, 4, 8, 77, 1, 2, 0, 5, 56, 28]
-    print("A[]:       ", A)
+    B = []
+    for value in range(0, listLenght):
+      B.append(random.randint(1, 5))
+    A = B
+    start = time.time()
     quickSort(A, 0, len(A)-1)
-    print("Sorted A[]:", A)
+    end = time.time()
+    print(end-start)
+    
+    A = B
+    start = time.time()
+    quickSortP(A, 0, len(A)-1)
+    end = time.time()
+    print(end-start)
 
 if __name__ == "__main__":
     main()

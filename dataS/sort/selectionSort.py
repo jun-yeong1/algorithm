@@ -10,6 +10,29 @@ def theLargest(A, last:int) -> int:	# A[0...last]에서 가장 큰 수의 인덱
 			largest = i
 	return largest
 
+def selectionSortFast(A):
+    start = 0
+    end = len(A) - 1
+
+    while start < end:
+        smallest = start
+        largest = start
+
+        for i in range(start, end + 1):
+            if A[i] < A[smallest]:
+                smallest = i
+            elif A[i] > A[largest]:
+                largest = i
+
+        A[start], A[smallest] = A[smallest], A[start]
+        
+        if largest == start:
+            largest = smallest
+        
+        A[end], A[largest] = A[largest], A[end]
+
+        start += 1
+        end -= 1
 # 코드 9-1
 
 def selectionSortRec(A, n):         # 길이 n을 가지는 A[0,1,..n-1] 리스트의 선택정렬(재귀)

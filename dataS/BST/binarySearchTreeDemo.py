@@ -1,4 +1,4 @@
-from BST.binarySearchTree import *
+from binarySearchTree import *
 
 bst1 = BinarySearchTree()
 bst1.insert(10)
@@ -13,5 +13,6 @@ bst1.insert(15)
 bst1.insert(40)
 bst1.delete(7550)
 bst1.delete(10)
+print(bst1)
 
 # 코드 10-2

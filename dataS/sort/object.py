@@ -1,16 +1,16 @@
 from selectionSort import *
 from bubbleSort import *
-from sort.insertionSort import *
-from sort.mergeSort import *
-from sort.quickSort import *
-from sort.heapSort import *
-from sort.shellSort import *
+from insertionSort import *
+from mergeSort import *
+from quickSort import *
+from heapSort import *
+from shellSort import *
 import random
 import time
 import sys
 
-sys.setrecursionlimit(1000000)
-listLength = 300
+sys.setrecursionlimit(10000000)
+listLength = 10000
 
 B= []
 for value in range(0, listLength):
@@ -18,48 +18,54 @@ for value in range(0, listLength):
 #선택정렬 재귀적    
 A = B
 start= time.time()
-selectionSortRec(A, listLength)
+selectionSort(A)
 end= time.time()
 print('Selection Sort (recusive) Processing Time: ', end-start)
 
-#버블정렬 재귀적
 A = B
 start= time.time()
-bubbleSortRec(A, listLength)
+selectionSortFast(A)
 end= time.time()
-print('Bubble Sort (recusive) Processing Time: ', end-start)
+print('Selection Sort fast Processing Time: ', end-start)
 
-#삽입정렬 재귀적
-A = B
-start= time.time()
-insertionSortRec(A, listLength)
-end= time.time()
-print('Insertion Sort (recusive) Processing Time: ', end-start)
+# #버블정렬 재귀적
+# A = B
+# start= time.time()
+# bubbleSortRec(A, listLength)
+# end= time.time()
+# print('Bubble Sort (recusive) Processing Time: ', end-start)
 
-# 병합정렬
-A = B
-start= time.time()
-mergeSort(A, listLength)
-end= time.time()
-print('mergeSort (recusive) Processing Time: ', end-start)
+# #삽입정렬 재귀적
+# A = B
+# start= time.time()
+# insertionSort(A, 1, len(A)-1)
+# end= time.time()
+# print('Insertion Sort (recusive) Processing Time: ', end-start)
 
-# 퀵정렬
-A = B
-start= time.time()
-quickSort(A, listLength)
-end= time.time()
-print('quickSort (recusive) Processing Time: ', end-start)
+# # 병합정렬
+# A = B
+# start= time.time()
+# mergeSort(A, A[0], A[-1])
+# end= time.time()
+# print('mergeSort (recusive) Processing Time: ', end-start)
 
-# 힙정렬
-A = B
-start= time.time()
-heapSort(A, listLength)
-end= time.time()
-print('heapSort (recusive) Processing Time: ', end-start)
+# # 퀵정렬
+# A = B
+# start= time.time()
+# quickSort(A, A[0], A[-1])
+# end= time.time()
+# print('quickSort Processing Time: ', end-start)
 
-# 쉘정렬
-A = B
-start= time.time()
-shellSort(A, listLength)
-end= time.time()
-print('shellSort (recusive) Processing Time: ', end-start)
+# # 힙정렬
+# A = B
+# start= time.time()
+# heapSort(A)
+# end= time.time()
+# print('heapSort Processing Time: ', end-start)
+
+# # 쉘정렬
+# A = B
+# start= time.time()
+# shellSort(A)
+# end= time.time()
+# print('shellSort Processing Time: ', end-start)
