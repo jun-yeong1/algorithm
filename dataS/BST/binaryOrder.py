@@ -20,6 +20,8 @@ bst1.insert(32)
 bst1.insert(36)
 bst1.pre_order_traverse()       # 결과를 도식화 할 것
 bst1.delete(28)
+print(' ')
 bst1.in_order_traverse()         # 결과를 도식화 할 것
 bst1.delete(30)
+print(' ')
 bst1.post_order_traverse()

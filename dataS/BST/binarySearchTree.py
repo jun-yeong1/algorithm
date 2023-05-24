@@ -85,30 +85,33 @@ class BinarySearchTree:
   
   #순회
   def pre_order_traverse(self):
-    def preorder(node):
+    def __preorder(node):
       if node != None:
-        print(node.item, end='')
+        print(node.item, end=' ')
         if node.left:
-          preorder(node.left)
+          __preorder(node.left)
         if node.right:
-          preorder(node.right)
+          __preorder(node.right)
+    __preorder(self.__root)
 
   def in_order_traverse(self):
-    def inorder(node):
+    def __inorder(node):
       if node != None:
         if node.left:
-          inorder(node.left)
-        print(node.item, end='')
+          __inorder(node.left)
+        print(node.item, end=' ')
         if node.right:
-          inorder(node.right)
+          __inorder(node.right)
+    __inorder(self.__root)
       
   def post_order_traverse(self):
-    def postorder(node):
+    def __postorder(node):
       if node != None:
         if node.left:
-          postorder(node.left)
+          __postorder(node.left)
         if node.right:
-          postorder(node.right)
-        print(self.__root.item, '', end='')
+          __postorder(node.right)
+        print(self.__root.item, end=' ')
+    __postorder(self.__root)
 
 # 코드 10-1
