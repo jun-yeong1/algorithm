@@ -1,7 +1,7 @@
 from heap import *
 
 # print('Heap!')
-h1 = Heap([1, 11, 9, 2, 3])
+h1 = Heap([1, 11, 9, 2, 3]) 
 h1.buildHeap()
 h1.clear()
 # h1.heapPrint()

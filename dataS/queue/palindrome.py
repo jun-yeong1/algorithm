@@ -1,5 +1,5 @@
-from DS.stack.listStack import *
-from DS.queue.listQueue import *
+from dataS.stack.listStack import *
+from dataS.queue.listQueue import *
 
 def isPalindrome(A) -> bool:
 	s = ListStack(); q = ListQueue()
