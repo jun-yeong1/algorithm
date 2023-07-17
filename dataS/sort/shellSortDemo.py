@@ -1,4 +1,4 @@
-from shellSort import *
+from sort.shellSort import *
 
 def main():
     print("shellSort test")

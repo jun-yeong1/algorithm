@@ -1,4 +1,4 @@
-from heapSort import *
+from sort.heapSort import *
 
 def main():
     print("Heapsort!")

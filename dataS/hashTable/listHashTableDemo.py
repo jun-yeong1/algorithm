@@ -1,4 +1,4 @@
-from listHashTable참고용 import *
+from hashTable.listHashTable import *
 
 def main():
     print("List Hash Table Demo!")
@@ -19,7 +19,7 @@ def main():
     item = 21
     (i, j) = h.search(item)
     if i == None:
-        println("Search Failed!")
+        print("Search Failed!")
     else:
         print("Search:", item, "List:", i, ", item index", j)
 

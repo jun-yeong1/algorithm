@@ -1,4 +1,4 @@
-from linkedStack import *
+from stack.linkedStack import *
 
 st1 = LinkedStack()
 st1.push(100)

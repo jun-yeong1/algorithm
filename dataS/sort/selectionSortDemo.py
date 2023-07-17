@@ -1,4 +1,4 @@
-from selectionSort import *
+from sort.selectionSort import *
 
 def main():
     print("selectionSort test")

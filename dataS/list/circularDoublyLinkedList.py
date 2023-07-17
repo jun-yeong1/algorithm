@@ -1,4 +1,4 @@
-from bidirectNode import BidirectNode
+from list.bidirectNode import BidirectNode
 
 class CircularDoublyLinkedList:
 	def __init__(self):
@@ -15,7 +15,7 @@ class CircularDoublyLinkedList:
 			prev.next = newNode
 			self.__numItems += 1
 		else:
-			print("index", i, ": out of bound in insert()") # ÇÊ¿ä ½Ã ¿¡·¯ Ã³¸®
+			print("index", i, ": out of bound in insert()") # í•„ìš” ì‹œ ì—ëŸ¬ ì²˜ë¦¬
 
 	def append(self, newItem) -> None:
 		prev = self.__head.prev
@@ -25,15 +25,15 @@ class CircularDoublyLinkedList:
 		self.__numItems += 1
 
 	def pop(self, *args):
-		# °¡º¯ ÆÄ¶ó¹ÌÅÍ. ÀÎÀÚ°¡ ¾ø°Å³ª -1ÀÌ¸é ¸¶Áö¸· ¿ø¼Ò·Î Ã³¸®ÇÏ±â À§ÇÔ. ÆÄÀÌ½ã ¸®½ºÆ® ±ÔÄ¢ ¸¸Á·
+		# ê°€ë³€ íŒŒë¼ë¯¸í„°. ì¸ìê°€ ì—†ê±°ë‚˜ -1ì´ë©´ ë§ˆì§€ë§‰ ì›ì†Œë¡œ ì²˜ë¦¬í•˜ê¸° ìœ„í•¨. íŒŒì´ì¬ ë¦¬ìŠ¤íŠ¸ ê·œì¹™ ë§Œì¡±
 		if self.isEmpty():
 			return None
-		# ÀÎµ¦½º i °áÁ¤
-		if len(args) != 0: # pop(k)°ú °°ÀÌ ÀÎÀÚ°¡ ÀÖÀ¸¸é i = k ÇÒ´ç
+		# ì¸ë±ìŠ¤ i ê²°ì •
+		if len(args) != 0: # pop(k)ê³¼ ê°™ì´ ì¸ìê°€ ìˆìœ¼ë©´ i = k í• ë‹¹
 			i = args[0]
-		if len(args) == 0 or i == -1:# pop()¿¡ ÀÎÀÚ°¡ ¾ø°Å³ª pop(-1)ÀÌ¸é i¿¡ ¸Ç ³¡ ÀÎµ¦½º ÇÒ´ç
+		if len(args) == 0 or i == -1:# pop()ì— ì¸ìê°€ ì—†ê±°ë‚˜ pop(-1)ì´ë©´ iì— ë§¨ ë ì¸ë±ìŠ¤ í• ë‹¹
 			i = self.__numItems - 1
-		# i¹ø ¿ø¼Ò »èÁ¦
+		# ië²ˆ ì›ì†Œ ì‚­ì œ
 		if (i >= 0 and i <= self.__numItems - 1):
 			curr = self.getNode(i)
 			retItem = curr.item
@@ -55,14 +55,14 @@ class CircularDoublyLinkedList:
 			return None
 
 	def get(self, *args):
-		# °¡º¯ ÆÄ¶ó¹ÌÅÍ. ÀÎÀÚ°¡ ¾ø°Å³ª -1ÀÌ¸é ¸¶Áö¸· ¿ø¼Ò·Î Ã³¸®ÇÏ±â À§ÇÔ. ÆÄÀÌ½ã ¸®½ºÆ® ±ÔÄ¢ ¸¸Á·
+		# ê°€ë³€ íŒŒë¼ë¯¸í„°. ì¸ìê°€ ì—†ê±°ë‚˜ -1ì´ë©´ ë§ˆì§€ë§‰ ì›ì†Œë¡œ ì²˜ë¦¬í•˜ê¸° ìœ„í•¨. íŒŒì´ì¬ ë¦¬ìŠ¤íŠ¸ ê·œì¹™ ë§Œì¡±
 		if self.isEmpty(): return None
-		# ÀÎµ¦½º i °áÁ¤
-		if len(args) != 0:   # pop(k)°ú °°ÀÌ ÀÎÀÚ°¡ ÀÖÀ¸¸é i = k ÇÒ´ç
+		# ì¸ë±ìŠ¤ i ê²°ì •
+		if len(args) != 0:   # pop(k)ê³¼ ê°™ì´ ì¸ìê°€ ìˆìœ¼ë©´ i = k í• ë‹¹
 			i = args[0]
-		if len(args) == 0 or i == -1:# pop()¿¡ ÀÎÀÚ°¡ ¾ø°Å³ª pop(-1)ÀÌ¸é i¿¡ ¸Ç ³¡ ÀÎµ¦½º ÇÒ´ç
+		if len(args) == 0 or i == -1:# pop()ì— ì¸ìê°€ ì—†ê±°ë‚˜ pop(-1)ì´ë©´ iì— ë§¨ ë ì¸ë±ìŠ¤ í• ë‹¹
 			i = self.__numItems - 1
-		# i¹ø ¿ø¼Ò ¸®ÅÏ
+		# ië²ˆ ì›ì†Œ ë¦¬í„´
 		if (i >= 0 and i <= self.__numItems - 1):
 			return self.getNode(i).item
 		else:
@@ -95,7 +95,7 @@ class CircularDoublyLinkedList:
 					cnt += 1
 		return cnt
 
-	def extend(self, a): # a´Â ¼øÈ¸ °¡´ÉÇÑ ¸ğµç °´Ã¼
+	def extend(self, a): # aëŠ” ìˆœíšŒ ê°€ëŠ¥í•œ ëª¨ë“  ê°ì²´
 		for element in a:
 			self.append(element)
 
@@ -122,7 +122,7 @@ class CircularDoublyLinkedList:
 			self.append(element)
 
 	def __findNode(self, x) -> BidirectNode:
-		curr = self.__head.next  # 0¹ø ³ëµå
+		curr = self.__head.next  # 0ë²ˆ ë…¸ë“œ
 		while curr != self.__head:
  
 			if curr.item == x:
@@ -132,7 +132,7 @@ class CircularDoublyLinkedList:
 		return None
 
 	def getNode(self, i:int) -> BidirectNode:
-		curr = self.__head  # ´õ¹Ì Çìµå, index: -1
+		curr = self.__head  # ë”ë¯¸ í—¤ë“œ, index: -1
 		for index in range(i + 1):
 			curr = curr.next
 		return curr
@@ -141,20 +141,19 @@ class CircularDoublyLinkedList:
 		for element in self:
 			print(element, end = ' ')
 		print()
- 
 	def __iter__(self):  # generating iterator and return
 		return CircularDoublyLinkedListIterator(self)
  
 class CircularDoublyLinkedListIterator:
 	def __init__(self, alist):
-		self.__head = alist.getNode(-1)  		# ´õ¹Ì Çìµå
-		self.iterPosition = self.__head.next  	# 0¹ø ³ëµå
+		self.__head = alist.getNode(-1)  		# ë”ë¯¸ í—¤ë“œ
+		self.iterPosition = self.__head.next  	# 0ë²ˆ ë…¸ë“œ
 	def __next__(self):
-		if self.iterPosition == self.__head: 	# ¼øÈ¯ ³¡
+		if self.iterPosition == self.__head: 	# ìˆœí™˜ ë
 			raise StopIteration
-		else: # ÇöÀç ¿ø¼Ò¸¦ ¸®ÅÏÇÏ¸é¼­ ´ÙÀ½ ¿ø¼Ò·Î ÀÌµ¿
+		else: # í˜„ì¬ ì›ì†Œë¥¼ ë¦¬í„´í•˜ë©´ì„œ ë‹¤ìŒ ì›ì†Œë¡œ ì´ë™
 			item = self.iterPosition.item
 			self.iterPosition = self.iterPosition.next
 			return item
 
-# ÄÚµå 5-25
+# ì½”ë“œ 5-25

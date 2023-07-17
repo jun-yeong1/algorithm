@@ -1,4 +1,4 @@
-from dataS.list.linkedListBasic import LinkedListBasic
+from list.linkedListBasic import *
 
 class LinkedStack:
 	def __init__(self):
