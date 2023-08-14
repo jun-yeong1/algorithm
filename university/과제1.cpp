@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int num1 = 0, num2 = 0, i = 0;
+    int num1, num2, i = 0;
     for (i = 1; i <= 100; i++) {
         num1 += i;
         if (i % 3 == 0) {
