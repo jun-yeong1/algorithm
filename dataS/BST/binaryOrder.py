@@ -18,10 +18,13 @@ bst1.insert(38)
 bst1.insert(33)
 bst1.insert(32)
 bst1.insert(36)
+print("전위 순회")
 bst1.pre_order_traverse()       # 결과를 도식화 할 것
 bst1.delete(28)
 print(' ')
+print("중위 순회")
 bst1.in_order_traverse()         # 결과를 도식화 할 것
 bst1.delete(30)
 print(' ')
+print("후위 순회")
 bst1.post_order_traverse()

@@ -111,7 +111,7 @@ class BinarySearchTree:
           __postorder(node.left)
         if node.right:
           __postorder(node.right)
-        print(self.__root.item, end=' ')
+        print(node.item, end=' ')
     __postorder(self.__root)
 
 # 코드 10-1

@@ -173,7 +173,7 @@ class AVLTree:
   def pre_order_traverse(self):
     def __preorder(node):
       if node != None:
-        print(node.item, end=' ')
+        print(node.item, "(", node.height, ")", end=' ')
         if node.left:
           __preorder(node.left)
         if node.right:
@@ -185,7 +185,7 @@ class AVLTree:
       if node != None:
         if node.left:
           __inorder(node.left)
-        print(node.item, end=' ')
+        print(node.item, "(", node.height, ")", end=' ')
         if node.right:
           __inorder(node.right)
     __inorder(self.__root)
@@ -197,7 +197,7 @@ class AVLTree:
           __postorder(node.left)
         if node.right:
           __postorder(node.right)
-        print(self.__root.item, end=' ')
+        print(node.item, "(", node.height, ")", end=' ')
     __postorder(self.__root)
 
 # 코드 11-1
