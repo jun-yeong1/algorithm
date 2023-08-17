@@ -3,26 +3,31 @@
 using namespace std;
 
 int n, m;
-bool visited[101];
 vector<int> graph[101];
-int minp;
-
-void bfs(int p) {
+auto bfs(int v) {
+  bool visited[101] = {false, };
+  visited[v] = true;
+  int count = 0;
+  int sum = 0;
   queue<int> q;
-  q.push(p);
-  visited[p] = true;
+  q.push(v);
   while(!q.empty()) {
-    int x = q.front();
-    q.pop();
-    minp += graph[x].size();
-    for (int i = 0; i < graph[x].size(); i++) {
-      int y = graph[x][i];
-      if (!visited[y]) {
-        q.push(y);
-        visited[y] = true;
+    int size = q.size();
+    for (int i = 0; i < size; i++) {
+      int node = q.front();
+      q.pop();
+      sum += count;
+      for (int i = 0; i < graph[node].size(); i++) {
+        int x = graph[node][i];
+        if(!visited[x]) {
+          visited[x] = true;
+          q.push(x);
+        }
       }
     }
+    count++;
   }
+  return sum;
 }
 
 int main() {
@@ -36,8 +41,14 @@ int main() {
     graph[b].push_back(a);
     getchar();
   }
-  for (int i = 0; i < n; i++) {
-    bfs()
+  int min_sum = 999999;
+  int result = 0;
+  for (int i = 1; i < (n+1); i++) {
+    int bfs_sum = bfs(i);
+    if (bfs_sum < min_sum) {
+      min_sum = bfs_sum;
+      result = i;
+    }
   }
-  bfs(1);
+  cout << result;
 }
