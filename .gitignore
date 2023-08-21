@@ -2,8 +2,8 @@
 *.prob
 *.bin
 *.exe
-*/.vscode
+.vscode/
 /dataS
 /university
-/.breakpoints
-/.replit
+.breakpoints.exe/
+.replit.exe/
