@@ -5,5 +5,5 @@
 .vscode/
 /dataS
 /university
-.breakpoints.exe/
-.replit.exe/
+.breakpoints/
+.replit/
