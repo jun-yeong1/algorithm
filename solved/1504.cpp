@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
-#define INF 1e9
+#define INF 1e8
 
 using namespace std;
 
 int N, E, v1, v2;
 vector<pair<int, int> > graph[801];
 
-long long dijkstra(int start, int end) {
-  vector<int> dist(N, INF);
+int dijkstra(int start, int end) {
+  vector<int> dist(N + 1, INF);
   dist[start] = 0;
   priority_queue<pair<int, int> > pq;
-  pq.push(make_pair(0, start));
+  pq.push({0, start});
   while(!pq.empty()) {
     int cost = -pq.top().first;
     int here = pq.top().second;
@@ -38,14 +38,14 @@ int main(void) {
   }
   cin >> v1 >> v2;
 
-  long long startV1 = dijkstra(1, v1);
-  long long startV2 = dijkstra(1, v2);
+  int startV1 = dijkstra(1, v1);
+  int startV2 = dijkstra(1, v2);
 
-  long long secondV1 = dijkstra(v1, v2);
-  long long endV1 = dijkstra(v1, N);
+  int secondV1 = dijkstra(v1, v2);
+  int endV1 = dijkstra(v1, N);
 
-  long long secondV2 = dijkstra(v2, v1);
-  long long endV2 = dijkstra(v2, N);
+  int secondV2 = dijkstra(v2, v1);
+  int endV2 = dijkstra(v2, N);
   
   long long result1, result2;
   result1 = startV1 + secondV1 + endV2;
@@ -55,5 +55,7 @@ int main(void) {
 
   if (result >= INF) {
     cout << "-1";
-  } else cout << endV2;
+  } else {
+    cout << result;
+  }
 }
