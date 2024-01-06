@@ -8,7 +8,7 @@ int n;
 vector<pair<int, int> > graph[2001];
 
 vector<int> dijkstra(int start) {
-    vector<int> dist(n, INF);
+    vector<int> dist(n+1, INF);
     dist[start] = 0;
     // 가중치, 정점 순서
     priority_queue<pair<int, int> > pq;
@@ -64,8 +64,8 @@ int main (void) {
         }
         sort(end_t.begin(), end_t.end());
         // 다익스트라 두 번의 결과 저장
-        vector<int> f_dist(n, INF);
-        vector<int> s_dist(n, INF);
+        vector<int> f_dist(n+1, INF);
+        vector<int> s_dist(n+1, INF);
         f_dist = dijkstra(s);
         // 출발지 + g or h + g-h 거리
         int dist_sum;
