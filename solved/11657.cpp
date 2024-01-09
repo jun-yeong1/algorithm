@@ -5,43 +5,28 @@ using namespace std;
 int N, M;
 
 vector<pair<int, int> > graph[501];
-// reachable[u][v] = u->v 경로 유무
-bool reachable[501][501] = {false};
 
-vector<int> bellman(int start) {
-    vector<int> upper(N+1, INF);
+vector<long long> bellman(int start) {
+    vector<long long> upper(N+1, INF);
     upper[start] = 0;
-    // N-1번 순회
-    for(int iter = 0; iter < N-1; iter++) {
-        for (int here = 0; here < N; here++) {
+    bool updated;
+    // N번 순회
+    for(int iter = 1; iter <= N; iter++) {
+        updated = false;
+        for (int here = 1; here <= N; here++) {
             for (int i = 0; i < graph[here].size(); i++) {
                 int there = graph[here][i].first;
                 int cost = graph[here][i].second;
-                upper[there] = min(upper[there], upper[here] + cost);
-            }
-        }
-    }
-    for (int k = 1; k <= N; k++) {
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= N; j++) {
-                if (reachable[i][j] || (reachable[i][k] && reachable[k][j]))
-                reachable[i][j] = true;
-            }
-        }
-    }
-    // N번 순회 (음수사이클 존재할 시 N번째 완화 성공)
-    for (int here = 0; here < N; here++) {
-        for (int i = 0; i < graph[here].size(); i++) {
-            int there = graph[here][i].first;
-            int cost = graph[here][i].second;
-            if (upper[here] + cost < upper[there]) {
-                if (reachable[start][here+1]) {
-                    upper[0] = -1;
-                    cout << "w";
+                //완화
+                if (upper[here] != INF && upper[there] > upper[here] + cost) {
+                    upper[there] = upper[here] + cost;
+                    updated = true;
                 }
             }
         }
     }
+    // N번 째에도 완화가 된다면 음수 사이클 존재
+    if (updated) upper[0] = -1;
     return upper;
 }
 
@@ -51,21 +36,20 @@ int main(void) {
     for (int i = 0; i < M; i++) {
         int A, B, C;
         cin >> A >> B >> C;
-        graph[A].push_back(make_pair(B, C));
-        reachable[A][B] = true;
+        graph[A].push_back({B, C});
     }
-    vector<int> result;
+    vector<long long> result;
     result = bellman(1);
-    //cout << result[0];
     if (result[0] == -1) {
         cout << -1;
     } else {
         for (int i = 2; i <= N; i++) {
-            if (result[i] != INF) {
-                cout << result[i] << '\n';
+            if (result[i] < INF - 100) {
+                cout << result[i];
             } else {
-                cout << "-1" << '\n';
+                cout << -1;
             }
+            cout << '\n';
         }
     }
 }
