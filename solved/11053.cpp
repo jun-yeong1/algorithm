@@ -27,7 +27,7 @@ int main(void) {
     fill_n(cache, 1001, -1);
     for (int i = 0; i < n; i++) {
         lis(i);
-    } 
+    }
     int result = 0;
     for (int j = 0; j < n; j++) {
         result = max(result, cache[j]);
