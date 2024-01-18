@@ -1,17 +1,19 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+
 int n;
 vector<pair<int, int> > AB;
+int right_e[101];
 int cache[101];
-int elc(int start) {
+
+int lis(int start) {
     int& ret = cache[start];
     if (ret != -1) return ret;
-    ret = 0;
+    ret = 1;
     for (int next = start+1; next < n; next++) {
-        if ((AB[start].first < AB[next].first && AB[start].second > AB[next].second) 
-        || (AB[start].first > AB[next].first && AB[start].second < AB[next].second)) {
-            ret = elc(next) + 1;
+        if (right_e[start] < right_e[next]) {
+            ret = max(ret, lis(next) + 1);
         }
     }
     return ret;
@@ -25,11 +27,16 @@ int main(void) {
         AB.push_back({a, b});
     }
     sort(AB.begin(), AB.end());
+    for (int i = 0; i < n; i++) {
+        right_e[i] = AB[i].second;
+    }
     fill_n(cache, 101, -1);
     for (int i = 0; i < n; i++) {
-        elc(i);
+        lis(i);
     }
+    int max_lis = 0;
     for (int i = 0; i < n; i++) {
-        cout << cache[i] << " ";
+        max_lis = max(max_lis, cache[i]);
     }
+    cout << n - max_lis;
 }
