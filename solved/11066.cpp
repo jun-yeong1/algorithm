@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+// sum은 1에서 각 자리까지의 합
 int file[501], sum[501];
 int cache[501][501];
 
@@ -11,6 +11,7 @@ int file_sum(int start, int end) {
     if (ret != -1) return ret;
     ret = 1e9;
     for (int i = start; i < end; i++) {
+        // start-i까지의 최소 + i+1부터 end까지 최소 + end합 - start-1합
         ret = min(ret, file_sum(start, i) + file_sum(i+1, end) + sum[end]-sum[start-1]);
     }
     return ret;
