@@ -14,7 +14,6 @@ int coin_n() {
     return sum[k];
 }
 
-
 int main(void) {
     cin >> n >> k;
     for (int i = 0; i < n; i++) {
