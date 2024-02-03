@@ -6,9 +6,9 @@ int n, k;
 // 집합 원소
 string sets[15];
 // 집합 원소 나머지, 50자리 수 나머지
-int setMod[15], s_len[15], fitMod[50];
+int setMod[15], s_len[15], fitMod[51];
 // 메모이제이션
-long long cache[1>>15][100];
+long long cache[1<<15][100];
 
 // 입력받은 수 모두 나머지 계산 -> setMod
 // 입력받은 수 모두 길이 저장 -> s_len
@@ -17,15 +17,20 @@ void MOD() {
         s_len[i] = sets[i].size();
         int t = 0;
         for (auto c : sets[i]) {
-            t *= 10; t % k;
-            t += c - '0'; t %= k;
+            t *= 10; 
+            t % k;
+            t += c - '0'; 
+            t %= k;
         }
         setMod[i] = t;
     }
 }
-// 계산
+// bit = 방문여부, re = i % k
 long long sung(int bit, int re) {
-    if (bit == (1<<n)-1) return (re % k == 0);
+    if (bit == (1<<n)-1) {
+        if (re) return 0;
+        else return 1;
+    }
     long long& ret = cache[bit][re];
     if (ret != -1) return ret;
     ret = 0;
@@ -47,19 +52,25 @@ int main(void) {
     cin >> k;
     // 0~50 자리 수 나머지 -> fitMOD
     fitMod[0] = 1 % k;
-    for (int i = 1; i <= 50; i++) {
+    for (int i = 1; i < 51; i++) {
         fitMod[i] = (fitMod[i-1] * 10) % k;
     }
-    memset(&cache, -1, sizeof(cache));
+    // cache[1<<15][100] all -1
+    memset(cache, -1, sizeof(cache));
     MOD();
     long long p = sung(0, 0), q = 1;
     // sung 결과가 0인 경우 불가능
-    //if (p == 0) cout << "0/1"; return 0;
+    if (p == 0) {
+        cout << "0/1";
+        return 0;
+    }
+    
     // 분모 팩토리얼 n!
     for (int i = 1; i <= n; i++) q *= i;
     // algorithm in numeric 내장 함수 최대공약수 반환
     long long gcd_n = gcd(p, q);
-    cout << p << "/" << q << " ";
-    p /= gcd_n; q /= gcd_n;
+    p /= gcd_n;
+    q /= gcd_n;
     cout << p << "/" << q;
+    return 0;
 }
