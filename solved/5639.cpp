@@ -17,12 +17,15 @@ void postOrder(int pStart, int pEnd) {
         if (preOrder[i] > root) {
             L_i = i;
             break;
-        } else L_i = pEnd-1;
+        } else if (i == pEnd-1) {
+            L_i = pEnd;
+            break;
+        }
     }
     // left node size
     int L = L_i - pStart;
     postOrder(pStart+1, pStart+L);
-    postOrder(pStart+L, pStart+N-1);
+    postOrder(pStart+L, pStart+N);
     // 후위 순회 출력
     cout << root << '\n';
 }
