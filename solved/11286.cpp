@@ -1,54 +1,39 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
-vector<int> heap;
-
-void push_heap(int newValue) {
-    heap.push_back(newValue);
-    int idx = heap.size() - 1;
-    while (idx > 0 && abs(heap[(idx-1)/2]) > abs(heap[idx])) {
-        swap(heap[idx], heap[(idx-1)/2]);
-        idx = (idx-1) / 2;
-    }
-}
-void pop_heap() {
-    if (heap.empty()) {
-        cout << 0 << '\n';
-        return;
-    }
-    cout << heap[0] << '\n';
-    heap[0] = heap.back();
-    heap.pop_back();
-    int here = 0;
-    while (true) {
-        int left = here * 2 + 1;
-        int right = here * 2 + 2;
-        if (left >= heap.size()) break;
-        int next = here;
-        if (abs(heap[next]) > abs(heap[left])) {
-            next = left;
-        }
-        if (right < heap.size() && abs(heap[next]) > abs(heap[right])) {
-            next = right;
-        }
-        if (next == here) break;
-        swap(heap[here], heap[next]);
-        here = next;
+bool compare(int a, int b) {
+    if (abs(a) < abs(b)) {
+        return false;
+    } else if (abs(a) == abs(b)) {
+        return a > b;
+    } else {
+        return true;
     }
 }
 int main(void) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int n;
+    vector<int> heap;
     cin >> n;
     for (int i = 0; i < n; i++) {
         int a;
         cin >> a;
         if (a == 0) {
-            pop_heap();
-        } else push_heap(a);
+            if (heap.empty()) {
+                cout << 0 << '\n';
+            } else {
+                cout << heap.front() << '\n';
+                pop_heap(heap.begin(), heap.end(), compare);
+                heap.pop_back();
+            }
+        } else {
+            heap.push_back(a);
+            push_heap(heap.begin(), heap.end(), compare);
+        }
     }
 }
