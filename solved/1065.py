@@ -14,4 +14,3 @@ for i in range(1, N+1):
   if Xnum(i) == True:
     count += 1
 print(count) # 해결
-
