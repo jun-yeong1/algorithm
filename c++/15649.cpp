@@ -6,9 +6,9 @@ using namespace std;
 void back(bool visited[], int arr[], int n, int m, int num) {
     if (num == m) {
         for (int i = 0; i < m-1; i++) {
-            cout << arr[i] << " ";
+            printf("%d ", arr[i]);
         }
-        cout << arr[m-1] << endl;
+        printf("%d\n", arr[m-1]);
         return;
     }
     for (int i = 0; i < n; i++) {
@@ -17,6 +17,7 @@ void back(bool visited[], int arr[], int n, int m, int num) {
             arr[num] = i+1;
             num++;
             back(visited, arr, n, m, num);
+            num--;
             visited[i] = false;
         }
     }
@@ -29,8 +30,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         visited[i] = false;
     }
-    for (int i = 0; i < n; i++) {
-        arr[0] = i+1;
-        back(visited, arr, n, m, 1);
-    }
+    back(visited, arr, n, m, 0);
+
+    return 0;
 }
