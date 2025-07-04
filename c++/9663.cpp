@@ -16,7 +16,7 @@ void path(int y) {
 	for(int i = 0; i < n; i++) {
 		ko = 1;
 		for(int j = 0; j < y; j++) {
-            // 같은 행이나 열에 있는지, 대각선에 있는지
+            // 같은 행이나 열에 있는지, 대각선에 있는지(x1-x2 = y2-y1)
 			if(board[j] == i || abs(y-j) == abs(i-board[j])) {
 				ko = 0;
 				break;
