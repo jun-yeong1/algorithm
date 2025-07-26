@@ -1,44 +1,45 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
+int truck[2001]; // 마을별 박스 수
+vector<pair<pair<int, int>, int>> arr;
+// 오름차순 정렬
+bool compare(pair<pair<int, int>, int> a, pair<pair<int, int>, int> b) {
+    if (a.first.second == b.first.second) return a.first.first < b.first.first;
+    else return a.first.second < b.first.second;
+}
 int main() {
     int N, C;
     cin >> N >> C;
-    vector<vector<int>>arr(N+1, vector<int>(N+1, 0));
     int M;
     cin >> M;
     for (int i = 0; i < M; i++) {
         int in, out, num = 0;
         cin >> in >> out >> num;
-        arr[in][out] = num;
+        arr.push_back({{in, out}, num});
     }
-    int box = 0; // 현재 들고 있는 박스 개수
-    int result = 0; // 마을에 내리 박스 총 개수
+    sort(arr.begin(), arr.end(), compare);
+    int result = 0; // 마을에 내릴 박스 총 개수
     // i = 현재 위치의 마을
-    for (int i = 1; i <= N; i++) {
-        // 받기(박스 내리기) k는 i 보다 작은 마을
-        for (int k = 1; k < i; k++) {
-            if (arr[k][i] != 0) {
-                if (box <= arr[k][i]) {
-                    result += box;
-                    box = 0;
-                } else {
-                    result += arr[k][i];
-                    box -= arr[k][i];
-                }
-            }
+    for (int i = 0; i < arr.size(); i++) {
+        int start = arr[i].first.first;
+        int end = arr[i].first.second;
+        int bsize = arr[i].second;
+        int max_truck = 0;
+
+        for (int j = start; j < end; j++) {
+            max_truck = max(truck[j], max_truck);
         }
-        // 보내기(박스 추가) j는 i보다 큰 마을들
-        for (int j = i+1; j <= N; j++) {
-            if (arr[i][j] != 0) {
-                box += arr[i][j];
-            }
+
+        int box = min(bsize, C-max_truck); // 남은 공간 수(최소)
+        
+        for (int k = start; k < end; k++) {
+            truck[k] += box;
         }
-        if (box > C) {
-            box = C;
-        }
+        result += box;
     }
     cout << result << endl;
     
