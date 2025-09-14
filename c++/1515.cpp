@@ -5,25 +5,19 @@ using namespace std;
 int main() {
     string N;
     cin >> N;
-    int ten = 0;
-    if (N.size() == 1) {
-        cout << N << endl;
-    } else {
-        for (int i = 0; i < N.size()-1; i++) {
-            if (N[i] >= N[i+1]) {
-                ten += 10;
-            }
-            if (i+1 == N.size()) {
-                if (N[i+1] !=  ) {
-                    cout << N[i+1] + ten << endl;
-                } else {
-                    if (N[i+1])
+    int index, result = 1;
+    while(index != N.length()) {
+        string num = to_string(result);
+        for (int i = 0; i < num.length(); i++) {
+            if (N[index] == num[i]) {
+                index++;
+                if (index >= N.length()) {
+                    cout << result;
+                    exit(0);
                 }
             }
         }
-
+        result++;
     }
-    
-
     return 0;
 }
